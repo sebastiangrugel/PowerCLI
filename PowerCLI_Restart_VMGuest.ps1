@@ -4,6 +4,5 @@ Write-Host Initiating Reboot for $s
 Restart-VMGuest $s -Confirm:$False
 Get-VIEvent -Entity $s -MaxSamples 1 | select FullFormattedMessage, CreatedTime
 
-# Get task from cluster level
 
 }
