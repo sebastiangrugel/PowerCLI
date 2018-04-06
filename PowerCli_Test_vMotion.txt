@@ -1,0 +1,31 @@
+Original source: http://vcdx56.com/2016/08/verify-vmotion-functionality-using-powercli/
+
+#
+# PowerCLI to test vMotion functionality
+# Version 1.0
+# Magnus Andersson – Staff Solution Architect @Nutanix
+#
+# Specify vCenter Server, vCenter Server username, vCenter Server user password, esxi hosts and the VM you wish to vMotion.
+$vCenter=”SERVER“
+$esxihosts= Get-vmhost *cmp*
+$vm=”TESTVMNANE“
+#
+#
+#Connect to vCenter Server
+write-host “Connecting to vCenter Server $vCenter” -foreground green
+Connect-viserver $vCenter -user $vCenterUser
+#
+# Perform vMotion actions
+write-host ————-
+write-host Starting the vMotion process of VM $vm
+foreach ($esxihost in (get-vmhost $esxihosts | ? { $_.ConnectionState -eq “Connected”} |sort))
+{ 
+write-host Migrating $vm to $esxihost
+Get-VM -Name $vm | Move-VM -Destination $esxihost | out-null
+}
+write-host ————-
+write-host The vMotion process is complete
+write-host ————-
+# Disconnect from vCenter Server
+#write-host “Disconnecting to vCenter Server $vCenter” -foreground green
+#disconnect-viserver -confirm:$false | out-null
