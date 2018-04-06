@@ -1,4 +1,4 @@
-$servers = Get-Content d:\a545632\vmr2.txt
+$servers = Get-Content d:\data\vmr2.txt
 foreach ($s in $servers) {
 Write-Host Initiating Reboot for $s
 Restart-VMGuest $s -Confirm:$False
