@@ -1,0 +1,9 @@
+$vmhost_array = @("ealseirvcmp006.alsdpc.local","ealseirvcmp007.alsdpc.local",)
+
+foreach ($vmhost in $vmhost_array) {
+Write-Host "`nProcessing" $vmhost
+#Set-VMHost -State "Maintenance"
+#Start-Sleep -s 10
+Set-VMHost $vmhost -State "Disconnected"
+} 
+Disconnect-VIServer -Server $global:DefaultVIServers -Force -Confirm:$false
