@@ -1,4 +1,4 @@
-$vmhost_array = @("ealseirvcmp006.alsdpc.local","ealseirvcmp007.alsdpc.local",)
+$vmhost_array = @("esxi1.local","esxi2.local",)
 
 foreach ($vmhost in $vmhost_array) {
 Write-Host "`nProcessing" $vmhost
