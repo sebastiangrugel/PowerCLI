@@ -66,7 +66,7 @@ $liczedgy = $alledge.count
 # Z uwagi na to iż jest problem z parametrem -Encoding ([System.Text.Encoding]::UTF8) któy nie jest tutaj rozpoznawany odpowiednio pomijam go i temat jest po angielsku.
 #Send-MailMessage -to $to -from $from -subject "NSX EDGE Report.Wszystkie $liczedgy EDGE działają OK" -Encoding ([System.Text.Encoding]::UTF8) -SmtpServer $smtpserver -Credential $credential_mail -port $smtpport -UseSsl -BodyAsHtml -body "Jest OK"
 
-Send-MailMessage -to $to -from $from -subject "NSX Monitoring ==> All $liczedgy EDGEs working fine" -SmtpServer $smtpserver -Credential $credential_mail -port $smtpport -UseSsl -BodyAsHtml -body "Used script: https://bitbucket.exea.pl/projects/SEB/repos/powercli/browse/NSX-EDGE_Monitoring_Jenkins.ps1 "
+Send-MailMessage -to $to -from $from -subject "NSX Monitoring ==> All $liczedgy EDGEs working fine" -SmtpServer $smtpserver -Credential $credential_mail -port $smtpport -UseSsl -BodyAsHtml -body "All is OK"
 
         }
     else {
