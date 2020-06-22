@@ -1,7 +1,7 @@
 # Sebastian Grugel
 # Skrypt do sprawdzania nazwy maszyny wirtualnej z vCD i wskazywania jej w punktu widzenia vCentra.
 # W wersji Flashowej klienta można było to sprawdzac w GUI. Na tą chwilę 19.06.2020 nie widzę tej opcji w tenan cliencie.
-# Musimy przez byc zalogowani przez powercli jednoczesnie do vCD i vCenter
+# Musimy przed byc zalogowani przez powercli jednoczesnie do vCD i vCenter
 # 
 
 # Pole do wprowadzenia nazwy maszyny z vCD
