@@ -1,0 +1,11 @@
+foreach($vm in get-vm){
+    $sharedSC= Get-ScsiController -VM $vm | 
+        where {"Virtual","Physical" -contains $_.BusSharingMode}
+    if($sharedSC){
+        $sharedSC | select parent,name,type,BusSharingMode
+        $sharedSCKey = $sharedSC | %{$_.Key}
+        Get-HardDisk -VM $vm |
+            where {$sharedSCKey -contains $_.ExtensionData.ControllerKey} |
+        Select @{N="VM";E={$_.Parent.Name}},Name,Filename,DiskType,Persistence,StorageFormat,Devicename,ScsiCanonicalName,CapacityGB | ft
+    }
+}
