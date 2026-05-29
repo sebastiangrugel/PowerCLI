@@ -108,6 +108,7 @@ $logDir = Join-Path $PSScriptRoot "log"
 if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Path $logDir | Out-Null }
 $logFile = Join-Path $logDir ("log_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".log")
 Start-Transcript -Path $logFile -NoClobber
+$startTime = Get-Date
 Write-Host "Log  : $logFile" -ForegroundColor DarkGray
 
 # Validate input
@@ -236,5 +237,8 @@ foreach ($busNum in $sourceBusNumbers) {
 # Post-run validation summary
 Write-Host "`n=== Post-run State ===" -ForegroundColor Magenta
 foreach ($vmName in @($source, $target)) { Show-VMInfo -VMName $vmName }
+
+$elapsed = (Get-Date) - $startTime
+Write-Host ("`nCompleted in {0} min {1} sec." -f $elapsed.Minutes, $elapsed.Seconds) -ForegroundColor Cyan
 
 Stop-Transcript
