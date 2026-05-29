@@ -18,7 +18,7 @@ PowerShell scripts for non-destructively migrating VMDK disks between VMware VMs
 Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
 
 # Connect
-Connect-VIServer -Server vcenter-c.avengers.local -User administrator@vsphere.local -Password VMware1!
+Connect-VIServer -Server vcenter-c.avengers.local -User administrator@vsphere.local -Password <your-password>
 
 # Verify connection
 $global:DefaultVIServer
